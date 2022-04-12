@@ -5,7 +5,6 @@ class DoublyLinkedList {
     class Node{
         String data;
         int key;
-
         Node previous;
         Node next;
 
@@ -203,22 +202,46 @@ class DoublyLinkedList {
 
 
     public Node popHead (){
-        if(head!=null){
-            int key = head.key;
-            String data = head.data;
-            Node tempNode = new Node(key, data);
-            head.previous.next = null;
-            head = head.previous;
-            return tempNode;
+        if(!isEmpty()){
+            if(head.next!=null){
+                int key = head.key;
+                String data = head.data;
+                Node tempNode = new Node(key, data);
+                head.next.previous = null;
+                head = head.next;
+                return tempNode;
+            }
+            else{
+                int key = head.key;
+                String value = head.data;
+                Node tempNode = new Node(key, value);
+                head = null;
+                tail = null;
+                return tempNode;
+            }
         }
-        else{
-            int key = head.key;
-            String value = head.data;
-            Node tempNode = new Node(key, value);
-            head = null;
-            tail = null;
-            return tempNode;
+        return null;
+    }
+    public Node popTail (){
+        if(!isEmpty()){
+            if(tail.previous!=null){
+                int key = tail.key;
+                String data = tail.data;
+                Node tempNode = new Node(key, data);
+//                tail.previous.next = null;
+                tail = tail.previous;
+                return tempNode;
+            }
+            else{
+                int key = tail.key;
+                String value = tail.data;
+                Node tempNode = new Node(key, value);
+                head = null;
+                tail = null;
+                return tempNode;
+            }
         }
+        return null;
     }
 
     public Node deleteNode(Node del)
@@ -232,6 +255,7 @@ class DoublyLinkedList {
         // If node to be deleted is head node
         if (head == del) {
             head = del.next;
+//            head.previous.previous.next = del;
         }
 
         // Change next only if node to be deleted
@@ -255,16 +279,14 @@ class DoublyLinkedList {
         DoublyLinkedList tempList = new DoublyLinkedList();
 
         while(!isEmpty()) {
-            Node temp2 = popHead();
-            while (!tempList.isEmpty() && head.key < temp2.key){
-                Node current = popHead();
+            Node temp2 = popTail();
+            while (!tempList.isEmpty() && tempList.tail.key > temp2.key){
+                Node current = tempList.popTail();
                 addNode(current.key, current.data);
             }
             tempList.addNode(temp2.key, temp2.data);
 
         }
-        System.out.println("Posortowane byc powinno");
-        printNodes();
         return tempList;
     }
 
