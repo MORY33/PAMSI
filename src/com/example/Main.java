@@ -18,12 +18,11 @@ public class Main {
         Scanner scan = new Scanner(System.in);
 
         int c = 0;
-        while(true){
+        while (true) {
             c = scan.nextInt();
-            if(c==1||c==2||c==3){
+            if (c == 1 || c == 2 || c == 3) {
                 break;
-            }
-            else{
+            } else {
                 System.out.println("Ehh, enter valid number...");
                 System.out.println("Your choice: ");
             }
@@ -33,47 +32,22 @@ public class Main {
             case 1:
                 System.out.println("You're about to create a message");
                 System.out.println("Character limit for one package: 10");
-//                System.out.println(firstMess.createMsg());
                 Msg toprint = new Msg();
-                DoublyLinkedList dl_List = new DoublyLinkedList();
+//                DoublyLinkedList dl_List = new DoublyLinkedList();
                 toprint.createMsg();
                 System.out.println(toprint.dMsg);
                 firstMess.CreatePcg(toprint.dMsg);
-//                dl_List.sort();
-
 
 
                 break;
             case 2:
                 System.out.println("You lazy dumbass, go and load your message");
-                firstMess.loadMsg();
-                System.out.println(firstMess.dMsg);
+                firstMess.CreatePcg(firstMess.loadMsg());
                 break;
             default:
                 break;
         }
     }
-
-        //lista jednokierunkowa
-//    public static void main(String[] args){
-//        LinkedList linked = new LinkedList();
-//        linked.insert("Str");
-//        linked.insert("Surr");
-//        linked.insert("ender");
-//
-//        linked.show();
-
-        //lista dwukierunkowa
-//        DoublyLinkedList dl_List = new DoublyLinkedList();
-//        //Add nodes to the list
-//        dl_List.addNode("shee");
-//        dl_List.addNode("shh");
-//        dl_List.addNode("30it ");
-//        dl_List.addNode("probably");
-//        dl_List.addNode("works");
-//
-//        //print the nodes of DoublyLinkedList
-//        dl_List.printNodes();
-    }
+}
 
     //wszystko czego tylko dotne to staje sie zlotem

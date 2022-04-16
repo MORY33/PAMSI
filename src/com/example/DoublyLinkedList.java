@@ -2,7 +2,7 @@ package com.example;
 
 class DoublyLinkedList {
     //A node class for doubly linked list
-    class Node{
+     class Node{
         String data;
         int key;
         Node previous;
@@ -13,18 +13,6 @@ class DoublyLinkedList {
             this.data = data;
             next = null;
             previous = null;
-        }
-        public Node(){
-
-        }
-
-        public Node getHead() {
-            return head;
-        }
-
-
-        public Node getTail() {
-            return tail;
         }
 
     }
@@ -144,18 +132,15 @@ class DoublyLinkedList {
 //            current.key = i;
 //
             i++;
-//            deleteAt(i);
         }
 
         if (flag) {
-//            System.out.println("Node is present in the list at the position : " + i + " " + newData + " " + newKey);
             deleteAt(i-1);
         }
         else
             System.out.println("Node is not present in the list");
 
         return newData;
-//        return new Pair<Integer, String>(newKey, newData);
     }
 
 
@@ -201,27 +186,6 @@ class DoublyLinkedList {
     }
 
 
-    public Node popHead (){
-        if(!isEmpty()){
-            if(head.next!=null){
-                int key = head.key;
-                String data = head.data;
-                Node tempNode = new Node(key, data);
-                head.next.previous = null;
-                head = head.next;
-                return tempNode;
-            }
-            else{
-                int key = head.key;
-                String value = head.data;
-                Node tempNode = new Node(key, value);
-                head = null;
-                tail = null;
-                return tempNode;
-            }
-        }
-        return null;
-    }
     public Node popTail (){
         if(!isEmpty()){
             if(tail.previous!=null){
@@ -244,35 +208,6 @@ class DoublyLinkedList {
         return null;
     }
 
-    public Node deleteNode(Node del)
-        {
-//        Node temptemp = new Node(del.key, del.data);
-        // Base case
-        if (head == null || del == null) {
-            return null;
-        }
-
-        // If node to be deleted is head node
-        if (head == del) {
-            head = del.next;
-//            head.previous.previous.next = del;
-        }
-
-        // Change next only if node to be deleted
-        // is NOT the last node
-        if (del.next != null) {
-            del.next.previous = del.previous;
-        }
-
-        // Change prev only if node to be deleted
-        // is NOT the first node
-        if (del.previous != null) {
-            del.previous.next = del.next;
-        }
-
-        // Finally, free the memory occupied by del
-        return del;
-    }
 
     public DoublyLinkedList sort(){
 //        Node tempPcg = head;
